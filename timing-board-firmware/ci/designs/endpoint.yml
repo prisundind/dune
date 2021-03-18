@@ -1,0 +1,35 @@
+# ------------------------
+# Endpoint wrapper
+# ------------------------
+
+#--- Endpoint wrapper PC053A ---------------------
+# Dep and syntax check
+check:endpoint_pc053a_fmc:
+  extends: .jt_viv_check
+  variables:
+    PROJECT_DIR_PATH: "projects/endpoint"
+    PROJECT_TOP_DEP: "top_a35_ax3_pm3_pc053a.dep"
+
+# Build
+build:endpoint_pc053a_fmc:
+  extends: .jt_viv_build
+  dependencies:
+  needs:
+    - job: check:endpoint_pc053a_fmc
+      artifacts: true
+
+#--- Endpoint wrapper PC053D ---------------------
+# Dep and syntax check
+check:endpoint_pc053d_fmc:
+  extends: .jt_viv_check
+  variables:
+    PROJECT_DIR_PATH: "projects/endpoint"
+    PROJECT_TOP_DEP: "top_a35_ax3_pm3_pc053d.dep"
+
+# Build
+build:endpoint_pc053d_fmc:
+  extends: .jt_viv_build
+  dependencies:
+  needs:
+    - job: check:endpoint_pc053d_fmc
+      artifacts: true

@@ -1,0 +1,13 @@
+<node id="tx" address="0x0" fwinfo="endpoint">
+		<node id="csr" address="0x0" description="ctrl/stat register" fwinfo="endpoint;width=1">
+				<node id="ctrl" address="0x0">
+					<node id="en" mask="0x1"/>
+					<node id="clr" mask="0x2"/>
+				</node>
+				<node id="stat" address="0x1">
+					<node id="locked" mask="0x1"/>
+					<node id="err" mask="0x2"/>
+				</node>
+		</node>
+		<node id="ctrs" address="0x10" description="tx counters" mode="block" size="0x10" fwinfo="endpoint;width=4"/>
+</node>

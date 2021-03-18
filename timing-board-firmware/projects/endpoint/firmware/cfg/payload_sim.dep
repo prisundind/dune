@@ -1,0 +1,8 @@
+src --cd ../sim_hdl payload_sim.vhd
+src ipbus_decode_top_sim.vhd
+addrtab -t top_sim.xml
+src -c ipbus-firmware:components/ipbus_core ipbus_fabric_sel.vhd
+src -c components/common pdts_defs.vhd
+include -c components/hw pdts_sim_io.dep
+include -components/endpoint pdts_endpoint_wrapper.dep
+src -c ipbus-firmware:components/ipbus_core ipbus_package.vhd

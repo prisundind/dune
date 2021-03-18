@@ -1,0 +1,7 @@
+src pdts_spill_gate.vhd pdts_debounce.vhd
+src ipbus_decode_pdts_spill_gate.vhd
+addrtab -t pdts_spill_gate.xml
+src -c ipbus-firmware:components/ipbus_core ipbus_fabric_sel.vhd
+include -c ipbus-firmware:components/ipbus_slaves ipbus_syncreg_v.dep ipbus_ctrs_v.dep ipbus_ctrs_samp.dep
+src -c components/common pdts_defs.vhd 
+src -c ipbus-firmware:components/ipbus_core ipbus_package.vhd

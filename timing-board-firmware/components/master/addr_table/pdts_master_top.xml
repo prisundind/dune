@@ -1,0 +1,4 @@
+<node id="pdts_master_top" description="PDTS top-level master" fwinfo="endpoint">
+    <node id="master" address="0x0" module="file://pdts_master.xml"/>
+    <node id="trig" address="0x200" module="file://pdts_trig_rx.xml"/>
+</node>

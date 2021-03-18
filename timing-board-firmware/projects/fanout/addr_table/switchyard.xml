@@ -1,0 +1,8 @@
+<node id="echo_mon" description="Echo command monitor" fwinfo="endpoint">
+		<node id="csr" address="0x0" fwinfo="endpoint;width=0">
+			<node id="ctrl" address="0x0">
+				<node id="master_src" mask="0x1"/>
+				<node id="ep_src" mask="0x2"/>
+			</node>
+		</node>
+</node>

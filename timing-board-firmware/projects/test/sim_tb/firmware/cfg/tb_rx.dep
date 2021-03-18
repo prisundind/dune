@@ -1,0 +1,8 @@
+src tb_rx.vhd
+include -c projects/pdts/endpoint pdts_endpoint.dep
+src -c components/pdts pdts_sync_ctr.vhd
+src -c components/ipbus_slaves ipbus_ctrlreg_v.vhd
+src ipbus_decode_tb_rx.vhd
+addrtab -t tb_rx.xml
+src -c components/ipbus_slaves ipbus_reg_types.vhd
+src -c components/ipbus_core ipbus_package.vhd

@@ -1,0 +1,6 @@
+src pdts_ts_source.vhd
+src ipbus_decode_pdts_ts_source.vhd
+addrtab -t pdts_ts_source.xml
+src -c ipbus-firmware:components/ipbus_core ipbus_fabric_sel.vhd
+include -c ipbus-firmware:components/ipbus_slaves ipbus_ctrs_v.dep
+src -c ipbus-firmware:components/ipbus_slaves ipbus_reg_types.vhd

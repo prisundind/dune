@@ -1,0 +1,33 @@
+<node id="endpoint" description="PDTS endpoint wrapper" fwinfo="endpoint">
+		<node id="version" address="0x0" fwinfo="endpoint;width=0"/>
+		<node id="csr" address="0x2" fwinfo="endpoint;width=1">
+			<node id="ctrl" address="0x0">
+				<node id="ep_en" mask="0x1"/>
+				<node id="buf_en" mask="0x2"/>
+				<node id="ctr_rst" mask="0x4"/>
+				<node id="int_addr" mask="0x8"/>
+				<node id="tgrp" mask="0x30"/>
+				<node id="mask_dis" mask="0x40"/>
+				<node id="addr" mask="0xff00"/>
+			</node>
+			<node id="stat" address="0x1">
+				<node id="buf_err" mask="0x1"/>
+				<node id="buf_warn" mask="0x2"/>
+				<node id="ep_rsto" mask="0x4"/>
+				<node id="ep_rdy" mask="0x8"/>
+				<node id="ep_stat" mask="0xf0"/>
+				<node id="in_spill" mask="0x100"/>
+				<node id="in_run" mask="0x200"/>
+				<node id="sfp_tx_dis" mask="0x400"/>
+			</node>
+		</node>
+		<node id="tstamp" address="0x4" mode="block" size="0x2" fwinfo="endpoint;width=1"/>
+		<node id="evtctr" address="0x6" fwinfo="endpoint;width=0"/>
+		<node id="buf" address="0x8" fwinfo="endpoint;width=1">
+			<node id="data" address="0x0" size="0x400" mode="port"/>
+			<node id="count" address="0x1" mask="0xffff"/>
+		</node>		
+		<node id="freq" address="0xa" module="file://ipbus_freq_ctr.xml"/>
+		<node id="ctrs" address="0x10" mode="block" size="0x10" fwinfo="endpoint;width=4"/>
+		<node id="scmd_gen" address="0x40" module="file://pdts_scmd_gen.xml"/>
+</node>

@@ -1,0 +1,5 @@
+<node id="TOP">
+		<node id="tx" address="0x0" module="file://tb_tx.xml"/>
+		<node id="rx" address="0x20" module="file://tb_rx.xml"/>
+    <node id="io" address="0x40" module="file://pdts_fmc_io.xml"/>
+</node>

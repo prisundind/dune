@@ -1,0 +1,3 @@
+src switchyard.vhd
+addrtab switchyard.xml
+src -c ipbus-firmware:components/ipbus_slaves ipbus_ctrlreg_v.vhd ipbus_reg_types.vhd

@@ -1,0 +1,2 @@
+include -c components/hw atfc_a35.dep
+include payload.dep

@@ -1,0 +1,5 @@
+src txrx_sim.vhd tb_tx_sim.vhd tb_rx_sim.vhd tb_sim_clk.vhd
+src -c components/pdts pdts_tx.vhd pdts_rx.vhd pdts_cksum.vhd outputlogic_crc16.vhd pdts_idle_gen.vhd pdts_sync_gen.vhd pdts_sync_ctr.vhd pdts_synchro.vhd pdts_tstamp.vhd
+src -c components/pdts pdts_tx_phy_int.vhd pdts_rx_phy.vhd pdts_enc8b10b.vhd pdts_dec8b10b.vhd pdts_code8b10bpkg.vhd
+src -c components/pdts pdts_defs.vhd
+src -c components/ipbus_core ipbus_package.vhd

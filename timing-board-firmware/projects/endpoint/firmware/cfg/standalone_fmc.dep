@@ -1,0 +1,3 @@
+src top_standalone_fmc.vhd
+include -c components/hw pdts_fmc_io.dep
+include pdts_endpoint_wrapper.dep

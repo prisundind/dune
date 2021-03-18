@@ -1,0 +1,9 @@
+src pdts_global.vhd
+src ipbus_decode_pdts_global.vhd
+addrtab -t pdts_global.xml
+src -c ipbus-firmware:components/ipbus_core ipbus_fabric_sel.vhd
+src -c ipbus-firmware:components/ipbus_slaves ipbus_roreg_v.vhd
+include -c ipbus-firmware:components/ipbus_slaves ipbus_syncreg_v.dep ipbus_ctrs_v.dep
+src -c components/common pdts_defs.vhd
+src -c ipbus-firmware:components/ipbus_slaves ipbus_reg_types.vhd
+src -c ipbus-firmware:components/ipbus_core ipbus_package.vhd

@@ -1,0 +1,5 @@
+setup -c boards/microzed/base_fw/synth settings_v7.tcl
+include -c boards/microzed/base_fw/synth z7020.dep
+src top_standalone_microzed.vhd endpoint_wrapper_standalone.vhd
+include -c components/endpoint pdts_endpoint.dep
+src -c boards/microzed/base_fw/synth --cd ../ucf microzed.tcl

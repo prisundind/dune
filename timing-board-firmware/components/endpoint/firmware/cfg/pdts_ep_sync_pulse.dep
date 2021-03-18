@@ -1,0 +1,3 @@
+src pdts_ep_sync_pulse.vhd
+addrtab pdts_ep_sync_pulse.xml
+include -c ipbus-firmware:components/ipbus_slaves ipbus_syncreg_v.dep

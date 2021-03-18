@@ -1,0 +1,4 @@
+src mmcm_test.vhd
+src -c components/ipbus_slaves ipbus_ctrlreg_v.vhd ipbus_reg_types.vhd
+#include -c components/ipbus_slaves ipbus_syncreg_v.dep
+include enclustra_ax3_pm3.dep

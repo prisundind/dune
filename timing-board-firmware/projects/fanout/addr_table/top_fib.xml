@@ -1,0 +1,7 @@
+<node id="TOP">
+    <node id="io" address="0x0" module="file://pdts_fib_io.xml"/>
+    <node id="switch" address="0x100" module="file://switchyard.xml"/>
+    <node id="master_top" address="0x400" module="file://master_top.xml"/>
+    <node id="endpoint0" address="0x1000" module="file://endpoint_wrapper.xml"/>
+</node>
+

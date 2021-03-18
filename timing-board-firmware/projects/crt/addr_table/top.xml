@@ -1,0 +1,4 @@
+<node id="TOP">
+    <node id="io" address="0x0" module="file://pdts_fmc_io.xml"/>
+    <node id="endpoint0" address="0x1000" module="file://crt_wrapper.xml"/>
+</node>

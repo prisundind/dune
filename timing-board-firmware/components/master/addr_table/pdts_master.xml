@@ -1,0 +1,12 @@
+<node id="pdts_master" description="PDTS master block" fwinfo="endpoint">
+		<node id="global" address="0x0" module="file://pdts_global.xml"/>
+		<node id="spill" address="0x10" module="file://pdts_spill_gate.xml"/>
+		<node id="tstamp" address="0x20" module="file://pdts_ts_source.xml"/>
+		<node id="acmd" address="0x28" module="file://pdts_acmd_master.xml"/>
+		<node id="echo" address="0x30" module="file://pdts_echo_mon.xml"/>
+		<node id="scmd_gen" address="0x40" module="file://pdts_scmd_gen.xml"/>
+		<node id="partition0" address="0x100" module="file://pdts_partition.xml"/>
+		<node id="partition1" address="0x140" module="file://pdts_partition.xml"/>
+		<node id="partition2" address="0x180" module="file://pdts_partition.xml"/>
+		<node id="partition3" address="0x1c0" module="file://pdts_partition.xml"/>
+</node>

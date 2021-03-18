@@ -1,0 +1,2 @@
+src pdts_rx.vhd pdts_rx_phy.vhd pdts_dec8b10b.vhd pdts_del.vhd
+src -c components/common pdts_defs.vhd pdts_code8b10bpkg.vhd outputlogic_crc16.vhd pdts_cksum.vhd 

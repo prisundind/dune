@@ -1,0 +1,9 @@
+src fmc_master.vhd
+src -c components/pdts pdts_synchro.vhd prbs7_ser.vhd prbs7_chk_noctr.vhd
+include -c ipbus-firmware:components/ipbus_slaves ipbus_ctrs_v.dep
+include -c components/pdts pdts_pc059_io.dep
+src -c ipbus-firmware:components/ipbus_slaves ipbus_ctrlreg_v.vhd
+src -c ipbus-firmware:components/ipbus_core ipbus_fabric_sel.vhd
+src ipbus_decode_top.vhd
+addrtab -t top.xml
+src -c ipbus-firmware:components/ipbus_slaves ipbus_reg_types.vhd

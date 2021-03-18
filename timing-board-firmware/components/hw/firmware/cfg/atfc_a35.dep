@@ -1,0 +1,3 @@
+src top_atfc.vhd
+src --cd ../ucf pc053_atfc.tcl
+include -c boards/atfc/base_fw/synth atfc_a35.dep # **FIXME**

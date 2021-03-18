@@ -1,0 +1,23 @@
+<node id="endpoint" description="PDTS CRT endpoint wrapper" fwinfo="endpoint">
+		<node id="csr" address="0x0" fwinfo="endpoint;width=1">
+			<node id="ctrl" address="0x0">
+				<node id="tgrp" mask="0x3"/>
+				<node id="ep_en" mask="0x4"/>
+			</node>
+			<node id="stat" address="0x1">
+				<node id="ep_rdy" mask="0x1"/>
+				<node id="ep_stat" mask="0xf0"/>
+			</node>
+		</node>
+		<node id="pulse" address="0x8" fwinfo="endpoint;width=3">
+		    <node id="ctrl" address="0x0">
+		        <node id="en" mask="0x1"/>
+		        <node id="force" mask="0x2"/>
+		        <node id="cmd" mask="0xf0"/>
+		        <node id="rst" mask="0x100"/>
+		    </node>
+		    <node id="cnt" address="0x4"/>
+		    <node id="ts_l" address="0x5"/>
+		    <node id="ts_h" address="0x6"/>
+		</node>
+</node>

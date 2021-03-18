@@ -1,0 +1,4 @@
+src top_afc_fib.vhd
+src -c components/hw --cd ../ucf fib_afc.tcl
+include -c components/ipbus/boards/afc/synth afc.dep
+

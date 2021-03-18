@@ -1,0 +1,4 @@
+src pdts_echo_mon.vhd
+addrtab pdts_echo_mon.xml
+src -c components/common pdts_synchro.vhd pdts_defs.vhd
+include -c ipbus-firmware:components/ipbus_slaves ipbus_syncreg_v.dep

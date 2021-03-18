@@ -1,0 +1,4 @@
+include standalone_fmc.dep
+src -c components/hw --cd ../ucf pc053_ax3_pm3.tcl
+include -c ipbus-firmware:boards/enclustra_ax3_pm3/synth a35.dep
+include -c ipbus-firmware:boards/enclustra_ax3_pm3/synth enclustra_ax3_pm3.dep

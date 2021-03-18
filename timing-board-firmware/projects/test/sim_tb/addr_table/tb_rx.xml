@@ -1,0 +1,16 @@
+<node id="rx" address="0x20" fwinfo="endpoint">
+		<node id="csr" address="0x0" description="ctrl/stat register" fwinfo="endpoint;width=3">
+				<node id="ctrl" address="0x0">
+					<node id="rst" mask="0x1"/>
+					<node id="addr" mask="0xff00"/>
+					<node id="tgrp" mask="0x30000"/>
+				</node>
+				<node id="stat" address="0x4">
+					<node id="stat" mask="0xf"/>
+					<node id="rdy" mask="0x10"/>
+				</node>
+				<node id="tstamp" address="0x5"/>
+				<node id="evtctr" address="0x6"/>
+		</node>
+		<node id="ctrs" address="0x10" description="rx counters" mode="block" size="0x10" fwinfo="endpoint;width=4"/>
+</node>

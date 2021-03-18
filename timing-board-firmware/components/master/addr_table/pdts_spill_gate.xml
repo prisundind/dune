@@ -1,0 +1,22 @@
+<node id="pdts_spill_gate" description="Spill signal interface" fwinfo="endpoint">
+		<node id="csr" address="0x0" fwinfo="endpoint;width=1">
+			<node id="ctrl" address="0x0">
+				<node id="en" mask="0x1"/>
+				<node id="src" mask="0x2"/>
+				<node id="force" mask="0x4"/>
+				<node id="clr" mask="0x8"/>
+				<node id="fake_cyc_len" mask="0xff0000"/>
+				<node id="fake_spill_len" mask="0xff000000"/>
+			</node>
+			<node id="stat" address="0x1">
+				<node id="in_spill" mask="0x1"/>
+			</node>
+		</node>
+		<node id="ctrs" address="0x4" fwinfo="endpoint;width=2">
+		    <node id="spill" address="0x0"/>
+		    <node id="spill_start" address="0x1"/>
+		    <node id="spill_end" address="0x2"/>
+		    <node id="spill_warn" address="0x3"/>
+		</node>
+		<node id="tstamp" mode="block" size="0x6" address="0x8" fwinfo="endpoint;width=3"/>
+</node>

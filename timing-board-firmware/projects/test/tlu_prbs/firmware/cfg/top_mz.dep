@@ -1,0 +1,5 @@
+setup -c boards/microzed/base_fw/synth settings_v7.tcl
+include -c boards/microzed/base_fw/synth z7020.dep
+src top_mz.vhd
+src -c boards/microzed/base_fw/synth --cd ../ucf microzed.tcl
+src -c components/pdts prbs7_chk.vhd prbs7_ser.vhd pdts_synchro.vhd

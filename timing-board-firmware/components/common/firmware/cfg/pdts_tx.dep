@@ -1,0 +1,3 @@
+src pdts_tx.vhd pdts_cksum.vhd outputlogic_crc16.vhd
+src pdts_tx_phy.vhd pdts_enc8b10b.vhd pdts_code8b10bpkg.vhd
+src pdts_defs.vhd

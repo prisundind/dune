@@ -1,0 +1,16 @@
+<node id="TOP">
+    <node id="csr" address="0x0" description="ctrl/stat register" fwinfo="endpoint;width=1">
+        <node id="ctrl" address="0x0">
+        	<node id="mmcm_rst_0" mask="0x1"/>
+        	<node id="mmcm_rst_1" mask="0x2"/>
+        	<node id="sync_en" mask="0x4"/>
+        </node>
+        <node id="stat" address="0x1">
+        	<node id="locked_0" mask="0x1"/>
+        	<node id="locked_1" mask="0x2"/>
+        	<node id="match" mask="0x4"/>
+        	<node id="done" mask="0x8"/>
+        	<node id="patt" mask="0x3ff00"/>
+        </node>
+    </node>
+</node>

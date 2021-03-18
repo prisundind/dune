@@ -1,0 +1,143 @@
+To deploy the endpoint in your design, you should include the following files:
+
+projects/endpoint/firmware/hdl/pdts_endpoint.vhd
+projects/endpoint/firmware/hdl/pdts_ep_startup.vhd
+projects/endpoint/firmware/hdl/pdts_tstamp.vhd
+components/pdts/firmware/hdl/pdts_rx_div_mmcm.vhd
+components/pdts/firmware/hdl/pdts_rx_phy.vhd
+components/pdts/firmware/hdl/pdts_rx.vhd
+components/pdts/firmware/hdl/pdts_synchro.vhd
+components/pdts/firmware/hdl/pdts_dec8b10b.vhd
+components/pdts/firmware/hdl/pdts_idle_gen.vhd
+components/pdts/firmware/hdl/pdts_scmd_merge.vhd
+components/pdts/firmware/hdl/pdts_prio_enc.vhd
+components/pdts/firmware/hdl/pdts_tx.vhd
+components/pdts/firmware/hdl/pdts_cksum.vhd
+components/pdts/firmware/hdl/outputlogic_crc16.vhd
+components/pdts/firmware/hdl/pdts_tx_phy.vhd
+components/pdts/firmware/hdl/pdts_enc8b10b.vhd
+components/pdts/firmware/hdl/pdts_code8b10bpkg.vhd
+components/pdts/firmware/hdl/pdts_defs.vhd
+
+The top-level declaration for the pdts_endpoint is:
+
+entity pdts_endpoint is
+	generic(
+		SCLK_FREQ: real := 50.0; -- Frequency (MHz) of the supplied sclk
+		EN_TX: boolean := false
+	);
+	port(
+		sclk: in std_logic; -- Free-running system clock
+		srst: in std_logic; -- System reset (sclk domain)
+		addr: in std_logic_vector(7 downto 0); -- Endpoint address (async, sampled in clk domain)
+		tgrp: in std_logic_vector(1 downto 0); -- Timing group (async, sampled in clk domain)
+		stat: out std_logic_vector(3 downto 0); -- Status output (sclk domain)
+		rec_clk: in std_logic; -- CDR recovered clock from timing link
+		rec_d: in std_logic; -- CDR recovered data from timing link (rec_clk domain)
+		txd: out std_logic; -- Output data to timing link (rec_clk domain)
+		sfp_los: in std_logic := '0'; -- SFP LOS line (async, sampled in sclk domain)
+		cdr_los: in std_logic := '0'; -- CDR LOS line (async, sampled in sclk domain)
+		cdr_lol: in std_logic := '0'; -- CDR LOL line (async, sampled in sclk domain)
+		sfp_tx_dis: out std_logic; -- SFP tx disable line (clk domain)
+		clk: out std_logic; -- 50MHz clock output
+		rst: out std_logic; -- 50MHz domain reset
+		rdy: out std_logic; -- Timestamp valid flag
+		sync: out std_logic_vector(SCMD_W - 1 downto 0); -- Sync command output (clk domain)
+		sync_stb: out std_logic; -- Sync command strobe (clk domain)
+		sync_valid: out std_logic; -- Sync command valid flag (clk domain)
+		tstamp: out std_logic_vector(8 * TSTAMP_WDS - 1 downto 0); -- Timestamp out
+		tsync_in: in cmd_w := CMD_W_NULL; -- Tx sync command input
+		tsync_out: out cmd_r -- Tx sync command handshake
+	);
+
+end pdts_endpoint;
+
+- SCLK_FREQ should be set to the frequency of the supplied system clock 'sclk' in MHz
+
+- EN_TX should be left at the default of false except for the trigger
+
+- sclk is a free-running system clock at a frequency of your choice. There is no clock
+buffering or other manipulation inside the endpoint block.
+
+- srst is a synchronous reset (sclk domain) that should be held high until sclk is stable
+and the configuration signals to the endpoint are ready. Asserting this signal will cause
+the endpoint to begin its initialisation sequence again
+
+- addr is an eight-bit address that should be unique for each endpoint in the system.
+Set to all-zeroes for now.
+
+- tgrp is a two-bit address that sets the timing group (or 'partition') that this instance
+of the endpoint is a member of. You probably need to set this from a register in your
+design.
+
+- stat (sclk domain) indicates the status of the endpoint (you can find the meaning of the states
+in pdts_ep_startup.vhd). This is provided only for debugging purposes. You should use the
+rdy signal to indicate your firmware when the signals from the endpoint are valid.
+
+- rec_clk is the recovered clock from the CDR device (or from the TP cable for the trigger).
+
+- rec_d is the recovered data from the CDR device (or from the TP cable for the trigger).
+
+- txd is the output data from the endpoint back to the master. Connect this to your
+SFP data input (or to the TP cable for the trigger).
+
+- sfp_los should be connected to the corresponding line on the SFP (for systems
+not using an SFP, leave unconnected).
+
+- cdr_los should be connected to the corresponding line on the CDR chip (for systems not using
+CDR, leave unconnected).
+
+- cdr_lol should be connected to the corresponding line on the CDR chip (for systems not using
+CDR, leave unconnected).
+
+- sfp_tx_dis should be connceted to the corresponding line on the SFP
+
+- clk is the phase-adjusted 50MHz ProtoDUNE system clock
+
+- rst is a synchronous reset (clk domain) to your logic, asserted until the phase of clk
+is stable.
+
+- rdy (clk domain) indicates that the endpoint is running, and that output signals are
+valid. Until rdy is asserted, the tstamp may change randomly, and sync commands are
+meaningless.
+
+- sync (clk domain) is the synchronous command output from the endpoint. The table of current
+command codes can be found in pdts_defs.vhd.
+
+- sync_stb (clk domain) is the strobe for sync, and is asserted each time a new data word is
+written to sync. Note that commands can be longer than one word long.
+
+- sync_valid (clk domain) is asserted on the first word of each command. If your firmware only
+cares about the first word of each command (e.g. if you only listen to trigger
+commands, you can treat this as the qualifying signal for sync, and ignore
+subsequent words of commands).
+
+- tstamp (clk domain) is the system-wide 64b timestamp.
+
+- tsync_in (clk domain) is the interface for sending sync commands back to the master, and should
+only be used at this stage by the trigger system. Others should leave it disconnected.
+
+- tsync_out (clk domain) is the handshaking signals accompanying tsync_in, and should
+only be used at this stage by the trigger system.
+
+In order to assist in decoding the sync commands, a utility block is provided in
+components/pdts/firmware/hdl/pdts_ep_decoder.vhd:
+
+entity pdts_ep_decoder is
+	port(
+		clk: in std_logic; -- 50MHz clock
+		rst: in std_logic; -- Sync reset
+		rdy: in std_logic; -- Timing system up flag
+		scmd: in std_logic_vector(SCMD_W - 1 downto 0); -- Sync command input
+		scmd_v: in std_logic; -- Sync command valid flag
+		in_spill: out std_logic; -- Spill flag
+		in_run: out std_logic; -- Run flag
+		evtctr: out std_logic_vector(8 * EVTCTR_WDS - 1 downto 0) -- Event counter out
+	);
+
+end pdts_ep_decoder;
+
+This block can be connected to the endpoint outputs, and decodes the sync commands
+into spill and run flags, plus an event counter.
+
+

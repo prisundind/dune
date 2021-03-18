@@ -1,0 +1,35 @@
+# ------------------------
+# CRT Endpoint
+# ------------------------
+
+#--- CRT endpoint PC053A ---------------------
+# Dep and syntax check
+check:crt_pc053a_fmc:
+  extends: .jt_viv_check
+  variables:
+    PROJECT_DIR_PATH: "projects/crt"
+    PROJECT_TOP_DEP: "top_a35_ax3_pm3_pc053a.dep"
+
+# Build
+build:crt_pc053a_fmc:
+  extends: .jt_viv_build
+  dependencies:
+  needs:
+    - job: check:crt_pc053a_fmc
+      artifacts: true
+
+#--- CRT endpoint PC053D ---------------------
+# Dep and syntax check
+check:crt_pc053d_fmc:
+  extends: .jt_viv_check
+  variables:
+    PROJECT_DIR_PATH: "projects/crt"
+    PROJECT_TOP_DEP: "top_a35_ax3_pm3_pc053d.dep"
+
+# Build
+build:crt_pc053d_fmc:
+  extends: .jt_viv_build
+  dependencies:
+  needs:
+    - job: check:crt_pc053d_fmc
+      artifacts: true

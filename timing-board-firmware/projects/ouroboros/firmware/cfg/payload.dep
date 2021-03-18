@@ -1,0 +1,10 @@
+src payload.vhd
+src ipbus_decode_top.vhd
+addrtab -t top.xml
+src -c ipbus-firmware:components/ipbus_core ipbus_fabric_sel.vhd
+include -c components/hw pdts_fmc_io.dep
+src -c components/common pdts_rx_div_mmcm.vhd pdts_synchro.vhd
+include -c components/master pdts_master_top.dep
+src -c components/master pdts_master_defs.vhd
+include -c components/endpoint pdts_endpoint_wrapper.dep
+src -c ipbus-firmware:components/ipbus_core ipbus_package.vhd

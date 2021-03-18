@@ -1,0 +1,35 @@
+# ------------------------
+# Ouroloop
+# ------------------------
+
+#--- Ouroloop PC053A ---------------------
+# Dep and syntax check
+check:ouroboros_pc053a_fmc:
+  extends: .jt_viv_check
+  variables:
+    PROJECT_DIR_PATH: "projects/ouroboros"
+    PROJECT_TOP_DEP: "top_a35_ax3_pm3_pc053a_loopback.dep"
+
+# Build
+build:ouroboros_pc053a_fmc:
+  extends: .jt_viv_build
+  dependencies:
+  needs:
+    - job: check:ouroboros_pc053a_fmc
+      artifacts: true
+
+#--- Ouroloop PC053D ---------------------
+# Dep and syntax check
+check:ouroboros_pc053d_fmc:
+  extends: .jt_viv_check
+  variables:
+    PROJECT_DIR_PATH: "projects/ouroboros"
+    PROJECT_TOP_DEP: "top_a35_ax3_pm3_pc053d_loopback.dep"
+
+# Build
+build:ouroboros_pc053d_fmc:
+  extends: .jt_viv_build
+  dependencies:
+  needs:
+    - job: check:ouroboros_pc053d_fmc
+      artifacts: true

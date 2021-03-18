@@ -1,0 +1,5 @@
+src pdts_endpoint.vhd pdts_tstamp.vhd pdts_acmd_rx.vhd pdts_adjust.vhd
+include pdts_rx.dep pdts_ep_startup.dep
+src -c components/common pdts_rx_div_mmcm.vhd pdts_idle_gen.vhd pdts_scmd_merge.vhd pdts_prio_enc.vhd
+include -c components/common pdts_tx.dep
+src -c components/common pdts_defs.vhd

@@ -1,0 +1,6 @@
+src --cd ../sim_hdl pdts_sim_io.vhd
+src ipbus_decode_pdts_sim_io.vhd
+addrtab -t pdts_sim_io.xml
+src -c ipbus-firmware:components/ipbus_slaves ipbus_ctrlreg_v.vhd ipbus_roreg_v.vhd
+src -c ipbus-firmware:components/ipbus_core ipbus_fabric_sel.vhd
+src -c ipbus-firmware:components/ipbus_slaves ipbus_reg_types.vhd

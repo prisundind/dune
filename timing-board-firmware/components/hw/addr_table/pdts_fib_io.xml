@@ -1,0 +1,33 @@
+<node id="io" description="FMC IO" fwinfo="fanout">
+		<node id="csr" address="0x0" description="ctrl/stat register" fwinfo="endpoint;width=1">
+				<node id="ctrl" address="0x0">
+					<node id="soft_rst" mask="0x1"/>
+					<node id="nuke" mask="0x2"/>
+					<node id="rst" mask="0x4"/>
+					<node id="rstb_i2c" mask="0x8"/>
+					<node id="inmux" mask="0x70"/>
+				</node>
+				<node id="stat" address="0x1">
+					<node id="mmcm_ok" mask="0x1"/>
+					<node id="pll_ok" mask="0x2"/>
+					<node id="mmcm_sticky" mask="0x4"/>
+					<node id="pll_sticky" mask="0x8"/>
+				</node>
+		</node>
+		<node id="config" address="0x2" description="board/firmware config" fwinfo="endpoint;width=0">
+		    <node id="board_type" mask="0xff0000"/>
+		    <node id="carrier_type" mask="0xff00"/>
+		    <node id="design_type" mask="0xff"/>
+		</node>
+		<node id="i2c_main" address="0x08" module="file://opencores_i2c.xml" class="I2CMasterNode" parameters=""/>
+		<node id="i2c_sfp0" address="0x10" module="file://opencores_i2c.xml" class="I2CMasterNode" parameters="eeprom=0x50;diag=0x51"/>
+		<node id="i2c_sfp1" address="0x18" module="file://opencores_i2c.xml" class="I2CMasterNode" parameters="eeprom=0x50;diag=0x51"/>
+		<node id="i2c_sfp2" address="0x20" module="file://opencores_i2c.xml" class="I2CMasterNode" parameters="eeprom=0x50;diag=0x51"/>
+		<node id="i2c_sfp3" address="0x28" module="file://opencores_i2c.xml" class="I2CMasterNode" parameters="eeprom=0x50;diag=0x51"/>
+		<node id="i2c_sfp4" address="0x30" module="file://opencores_i2c.xml" class="I2CMasterNode" parameters="eeprom=0x50;diag=0x51"/>
+		<node id="i2c_sfp5" address="0x38" module="file://opencores_i2c.xml" class="I2CMasterNode" parameters="eeprom=0x50;diag=0x51"/>
+		<node id="i2c_sfp6" address="0x40" module="file://opencores_i2c.xml" class="I2CMasterNode" parameters="eeprom=0x50;diag=0x51"/>
+		<node id="i2c_sfp7" address="0x48" module="file://opencores_i2c.xml" class="I2CMasterNode" parameters="eeprom=0x50;diag=0x51"/>
+		<node id="freq" address="0x50" module="file://ipbus_freq_ctr.xml"/>
+</node>
+

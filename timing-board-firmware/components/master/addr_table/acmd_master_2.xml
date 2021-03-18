@@ -1,0 +1,15 @@
+<node id="acmd_master" description="Async command source" fwinfo="endpoint">
+		<node id="csr" address="0x0" fwinfo="endpoint;width=1">
+			<node id="ctrl" address="0x0">
+				<node id="go" mask="0x1"/>
+			</node>
+			<node id="stat" address="0x1">
+				<node id="tx_done" mask="0x1"/>
+				<node id="rx_done" mask="0x1"/>				
+			</node>
+		</node>
+		<node id="buf" address="0x2" fwinfo="endpoint;width=2">
+			<node id="data" address="0x0" size="0x20" mode="port"/>
+			<node id="count" address="0x1"/>
+		</node>
+</node>

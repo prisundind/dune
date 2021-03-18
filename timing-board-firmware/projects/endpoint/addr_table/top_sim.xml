@@ -1,0 +1,4 @@
+<node id="TOP">
+    <node id="io" address="0x0" module="file://pdts_sim_io.xml"/>
+    <node id="endpoint0" address="0x200" module="file://pdts_endpoint_wrapper.xml"/>
+</node>

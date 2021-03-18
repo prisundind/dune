@@ -1,0 +1,4 @@
+src top_enclustra_ax3_pm3_pc059.vhd net_addr.vhd
+src --cd ../ucf pc059_ax3_pm3.tcl
+include -c ipbus-firmware:boards/enclustra_ax3_pm3/synth a35.dep
+include -c ipbus-firmware:boards/enclustra_ax3_pm3/synth enclustra_ax3_pm3.dep

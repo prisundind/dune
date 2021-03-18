@@ -1,0 +1,2 @@
+src pdts_ep_startup.vhd pdts_del.vhd
+src -c components/common pdts_synchro.vhd pdts_chklock.vhd pdts_defs.vhd

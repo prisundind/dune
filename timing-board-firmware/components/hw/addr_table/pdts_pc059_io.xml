@@ -1,0 +1,40 @@
+<node id="io" description="FMC IO" fwinfo="endpoint">
+		<node id="csr" address="0x0" description="ctrl/stat register" fwinfo="endpoint;width=1">
+				<node id="ctrl" address="0x0">
+					<node id="soft_rst" mask="0x1"/>
+					<node id="nuke" mask="0x2"/>
+					<node id="rst" mask="0x4"/>
+					<node id="pll_rst" mask="0x8"/>
+					<node id="rst_i2cmux" mask="0x10"/>
+					<node id="rst_i2c" mask="0x20"/>
+					<node id="rst_lock_mon" mask="0x40"/>
+					<node id="master_src" mask="0x300"/>
+					<node id="mux" mask="0x7000"/>
+					<node id="sfp_edge" mask="0x100000"/>
+				</node>
+				<node id="stat" address="0x1">
+					<node id="usfp_los" mask="0x1"/>
+					<node id="usfp_flt" mask="0x2"/>        	
+					<node id="ucdr_los" mask="0x4"/>
+					<node id="ucdr_lol" mask="0x8"/>
+					<node id="cdr_los" mask="0x10"/>
+					<node id="cdr_lol" mask="0x20"/>
+					<node id="pll_lol" mask="0x40"/>
+					<node id="sfp_los" mask="0xff00"/>
+					<node id="mmcm_ok" mask="0x10000"/>
+					<node id="pll_ok" mask="0x20000"/>
+					<node id="mmcm_sticky" mask="0x40000"/>
+					<node id="pll_sticky" mask="0x80000"/>
+				</node>
+		</node>
+		<node id="config" address="0x2" description="board/firmware config" fwinfo="endpoint;width=0">
+		    <node id="board_type" mask="0xff0000"/>
+		    <node id="carrier_type" mask="0xff00"/>
+		    <node id="design_type" mask="0xff"/>
+		</node>
+		<node id="i2c" address="0x08" module="file://opencores_i2c.xml" class="I2CMasterNode" 
+			parameters="FMC_UID_PROM=0x57;AX3_Switch=0x21;SI5345=0x68;SFPExpander=0x75;SFP_Switch=0x73;SFP_EEProm=0x50;SFP_Diag=0x51"
+		/>
+		<node id="usfp_i2c" address="0x10" module="file://opencores_i2c.xml" class="I2CMasterNode" parameters="eeprom=0x50;diag=0x51"/>
+		<node id="freq" address="0x20" module="file://ipbus_freq_ctr.xml"/>
+</node>

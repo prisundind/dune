@@ -1,0 +1,69 @@
+# ------------------------
+# Overlord
+# ------------------------
+
+
+#--- Overlord TLU ---------------------
+# Dep and syntax check
+check:overlord_tlu:
+  extends: .jt_viv_check
+  variables:
+    PROJECT_DIR_PATH: "projects/overlord"
+    PROJECT_TOP_DEP: "top_tlu.dep"
+
+# Build
+build:overlord_tlu:
+  extends: .jt_viv_build
+  dependencies:
+  needs:
+    - job: check:overlord_tlu
+      artifacts: true
+
+#--- Overlord ICEBERG TLU ---------------------
+# Dep and syntax check
+check:overlord_tlu_iceberg:
+  extends: .jt_viv_check
+  variables:
+    PROJECT_DIR_PATH: "projects/overlord"
+    PROJECT_TOP_DEP: "top_tlu_iceberg.dep"
+
+# Build
+build:overlord_tlu_iceberg:
+  extends: .jt_viv_build
+  dependencies:
+  needs:
+    - job: check:overlord_tlu_iceberg
+      artifacts: true
+
+#--- Overlord PC053A ---------------------
+# Dep and syntax check
+check:overlord_pc053a_fmc:
+  extends: .jt_viv_check
+  variables:
+    PROJECT_DIR_PATH: "projects/overlord"
+    PROJECT_TOP_DEP: "top_a35_ax3_pm3_pc053a.dep"
+
+# Build
+build:overlord_pc053a_fmc:
+  extends: .jt_viv_build
+  dependencies:
+  needs:
+    - job: check:overlord_pc053a_fmc
+      artifacts: true
+
+#--- Overlord PC053D ---------------------
+# Dep and syntax check
+check:overlord_pc053d_fmc:
+  extends: .jt_viv_check
+  variables:
+    PROJECT_DIR_PATH: "projects/overlord"
+    PROJECT_TOP_DEP: "top_a35_ax3_pm3_pc053d.dep"
+
+# Build
+build:overlord_pc053d_fmc:
+  extends: .jt_viv_build
+  dependencies:
+  needs:
+    - job: check:overlord_pc053d_fmc
+      artifacts: true
+

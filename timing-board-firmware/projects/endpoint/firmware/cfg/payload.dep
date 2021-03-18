@@ -1,0 +1,7 @@
+src payload.vhd
+src ipbus_decode_top.vhd
+addrtab -t top.xml
+src -c ipbus-firmware:components/ipbus_core ipbus_fabric_sel.vhd
+include -c components/hw pdts_fmc_io.dep
+include -c components/endpoint pdts_endpoint_wrapper.dep
+src -c ipbus-firmware:components/ipbus_core ipbus_package.vhd

@@ -1,0 +1,9 @@
+src crt_wrapper.vhd
+src ipbus_decode_crt_wrapper.vhd
+addrtab -t crt_wrapper.xml
+src -c ipbus-firmware:components/ipbus_core ipbus_fabric_sel.vhd
+include -c components/endpoint pdts_endpoint.dep pdts_ep_sync_pulse.dep
+src -c ipbus-firmware:components/ipbus_slaves ipbus_ctrlreg_v.vhd
+src -c components/common pdts_defs.vhd
+src -c ipbus-firmware:components/ipbus_slaves ipbus_reg_types.vhd
+src -c ipbus-firmware:components/ipbus_core ipbus_package.vhd

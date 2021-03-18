@@ -1,0 +1,3 @@
+src pdts_rob.vhd
+src -c ipbus-firmware:components/ipbus_util big_fifo_36.vhd
+src -c ipbus-firmware:components/ipbus_slaves ipbus_reg_types.vhd

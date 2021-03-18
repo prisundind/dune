@@ -1,0 +1,3 @@
+src pdts_endpoint_upstream.vhd
+include pdts_rx.dep pdts_ep_startup.dep
+src -c components/common pdts_defs.vhd

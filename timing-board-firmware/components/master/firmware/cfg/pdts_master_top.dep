@@ -1,0 +1,7 @@
+src --vhdl2008 pdts_master_top.vhd
+include -c components/common nim_to_trig_cmd.dep
+src ipbus_decode_pdts_master_top.vhd
+addrtab -t pdts_master_top.xml
+src -c ipbus-firmware:components/ipbus_core ipbus_fabric_sel.vhd
+include pdts_master.dep
+include pdts_trig_rx.dep

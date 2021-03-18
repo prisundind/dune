@@ -1,0 +1,12 @@
+<node id="sync_pulse" description="sync pulse generator" fwinfo="endpoint">
+		<node id="csr" address="0x0" fwinfo="endpoint;width=3">
+			<node id="ctrl" address="0x0">
+				<node id="en" mask="0x1"/>
+				<node id="force" mask="0x2"/>
+				<node id="cmd" mask="0xf0"/>
+			</node>
+			<node id="cnt" address="0x4">
+			<node id="tstamp_l" address="0x5">
+			<node id="tstamp_h" address="0x6">
+		</node>
+</node>

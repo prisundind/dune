@@ -1,0 +1,8 @@
+src pdts_partition.vhd pdts_partition_sm.vhd
+src ipbus_decode_pdts_partition.vhd
+addrtab -t pdts_partition.xml
+src -c ipbus-firmware:components/ipbus_core ipbus_fabric_sel.vhd
+src -c components/common pdts_synchro.vhd
+src -c components/endpoint pdts_ep_decoder.vhd
+include -c components/common pdts_mon_buf.dep
+include -c ipbus-firmware:components/ipbus_slaves ipbus_syncreg_v.dep ipbus_ctrs_v.dep ipbus_ctrs_samp.dep

@@ -1,0 +1,3 @@
+include -c ipbus-firmware:boards/sim sim_udp.dep
+include -c ipbus-firmware:boards/enclustra_ax3_pm3/synth a35.dep
+include payload_sim.dep

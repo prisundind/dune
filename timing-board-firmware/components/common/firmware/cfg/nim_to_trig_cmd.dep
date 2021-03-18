@@ -1,0 +1,2 @@
+src nim_to_trig_cmd.vhd 
+src -c components/master pdts_debounce.vhd

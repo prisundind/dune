@@ -1,0 +1,52 @@
+# ------------------------
+# Fanout
+# ------------------------
+
+
+#--- Fanout 0 -------------------------
+# Dep and syntax check
+check:fanout_0_pc059:
+  extends: .jt_viv_check
+  variables:
+    PROJECT_DIR_PATH: "projects/fanout"
+    PROJECT_TOP_DEP: "top_ip65.dep"
+
+# Build
+build:fanout_0_pc059:
+  extends: .jt_viv_build
+  dependencies:
+  needs:
+    - job: check:fanout_0_pc059
+      artifacts: true
+
+#--- Fanout 1 -------------------------
+# Dep and syntax check
+check:fanout_1_pc059:
+  extends: .jt_viv_check
+  variables:
+    PROJECT_DIR_PATH: "projects/fanout"
+    PROJECT_TOP_DEP: "top_ip66.dep"
+
+# Build
+build:fanout_1_pc059:
+  extends: .jt_viv_build
+  dependencies:
+  needs:
+    - job: check:fanout_1_pc059
+      artifacts: true
+
+#--- Fanout 2 -------------------------
+# Dep and syntax check
+check:fanout_2_pc059:
+  extends: .jt_viv_check
+  variables:
+    PROJECT_DIR_PATH: "projects/fanout"
+    PROJECT_TOP_DEP: "top_ip67.dep"
+
+# Build
+build:fanout_2_pc059:
+  extends: .jt_viv_build
+  dependencies:
+  needs:
+    - job: check:fanout_2_pc059
+      artifacts: true

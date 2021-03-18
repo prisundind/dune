@@ -1,0 +1,16 @@
+<node id="pdts_acmd_master" description="Async command source" fwinfo="endpoint">
+		<node id="csr" address="0x0" fwinfo="endpoint;width=1">
+			<node id="ctrl" address="0x0">
+				<node id="go" mask="0x1"/>
+				<node id="addr" mask="0xff00"/>
+				<node id="pdel" mask="0xf0000"/>
+				<node id="fdel" mask="0xf00000"/>
+				<node id="cdel" mask="0x3f000000"/>
+				<node id="update" mask="0x40000000"/>
+				<node id="tx_en" mask="0x80000000"/>				
+			</node>
+			<node id="stat" address="0x1">
+				<node id="done" mask="0x1"/>
+			</node>
+		</node>
+</node>

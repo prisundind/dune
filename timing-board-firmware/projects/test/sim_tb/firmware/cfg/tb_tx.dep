@@ -1,0 +1,8 @@
+src tb_tx.vhd
+src -c components/pdts pdts_rx_div_mmcm.vhd pdts_scmd_merge.vhd pdts_tx.vhd pdts_cksum.vhd outputlogic_crc16.vhd pdts_idle_gen.vhd pdts_sync_gen.vhd pdts_synchro.vhd pdts_tx_phy_int.vhd pdts_enc8b10b.vhd pdts_code8b10bpkg.vhd
+include -c components/ipbus_slaves ipbus_syncreg_v.dep
+src -c components/pdts pdts_defs.vhd
+src ipbus_decode_tb_tx.vhd
+addrtab -t tb_tx.xml
+src -c components/ipbus_slaves ipbus_reg_types.vhd
+src -c components/ipbus_core ipbus_package.vhd

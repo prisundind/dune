@@ -1,0 +1,3 @@
+setup build_settings_a35.tcl
+include -c components/hw enclustra_ax3_pm3_a35_tlu.dep
+include payload_tlu.dep

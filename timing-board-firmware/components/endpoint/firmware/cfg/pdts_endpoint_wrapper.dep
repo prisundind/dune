@@ -1,0 +1,13 @@
+src pdts_endpoint_wrapper.vhd
+src ipbus_decode_pdts_endpoint_wrapper.vhd
+addrtab -t pdts_endpoint_wrapper.xml
+src -c ipbus-firmware:components/ipbus_core ipbus_fabric_sel.vhd
+include pdts_endpoint.dep
+include -c ipbus-firmware:components/ipbus_slaves ipbus_ctrs_samp.dep ipbus_ctrs_v.dep
+src pdts_ep_decoder.vhd pdts_wrapper_defs.vhd
+include -c components/common pdts_mon_buf.dep pdts_scmd_gen.dep
+include -c ipbus-firmware:components/ipbus_slaves ipbus_freq_ctr.dep
+src -c ipbus-firmware:components/ipbus_slaves ipbus_roreg_v.vhd ipbus_ctrlreg_v.vhd
+src -c components/common pdts_defs.vhd
+src -c ipbus-firmware:components/ipbus_slaves ipbus_reg_types.vhd
+src -c ipbus-firmware:components/ipbus_core ipbus_package.vhd

@@ -1,0 +1,19 @@
+---
+#------------------------------------------------------------------------------
+setup_build_area:
+  extends: .jt_base
+  stage: setup
+  script:
+    - ipbb init build_area
+    - cd build_area
+    - ipbb add git https://github.com/ipbus/ipbus-firmware -b ${IPBUS_BRANCH}
+    #-----
+    - ln -s ${CI_PROJECT_DIR} src/timing-board-firmware
+    - env | grep -v PASSWORD | grep -v TOKEN | sort
+  artifacts:
+    paths: 
+      - build_area
+    expire_in: 1 day
+#------------------------------------------------------------------------------
+
+

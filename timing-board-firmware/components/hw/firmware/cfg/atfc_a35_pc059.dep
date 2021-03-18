@@ -1,0 +1,3 @@
+src top_atfc_pc059.vhd net_addr.vhd
+src --cd ../ucf pc059_atfc.tcl
+include -c boards/atfc/base_fw/synth atfc_a35.dep # **FIXME**

@@ -1,0 +1,59 @@
+# ------------------------
+# Ouroboros
+# ------------------------
+
+check:ouroboros_sim: 
+  extends: .jt_sim_check
+  variables:
+    PROJECT_DIR_PATH: "projects/ouroboros"
+    PROJECT_TOP_DEP: "top_sim.dep"
+    SIM_FLAVOUR: "fli-udp"
+
+
+#--- Ouroboros PC053A ---------------------
+# Dep and syntax check
+check:ouroboros_pc053a_fmc:
+  extends: .jt_viv_check
+  variables:
+    PROJECT_DIR_PATH: "projects/ouroboros"
+    PROJECT_TOP_DEP: "top_a35_ax3_pm3_pc053a.dep"
+
+# Build
+build:ouroboros_pc053a_fmc:
+  extends: .jt_viv_build
+  dependencies:
+  needs:
+    - job: check:ouroboros_pc053a_fmc
+      artifacts: true
+
+#--- Ouroboros PC053D ---------------------
+# Dep and syntax check
+check:ouroboros_pc053d_fmc:
+  extends: .jt_viv_check
+  variables:
+    PROJECT_DIR_PATH: "projects/ouroboros"
+    PROJECT_TOP_DEP: "top_a35_ax3_pm3_pc053d.dep"
+
+# Build
+build:ouroboros_pc053d_fmc:
+  extends: .jt_viv_build
+  dependencies:
+  needs:
+    - job: check:ouroboros_pc053d_fmc
+      artifacts: true
+
+#--- Ouroboros PC059 ---------------------
+# Dep and syntax check
+check:ouroboros_pc059:
+  extends: .jt_viv_check
+  variables:
+    PROJECT_DIR_PATH: "projects/ouroboros"
+    PROJECT_TOP_DEP: "top_a35_pc059.dep"
+
+# Build
+build:ouroboros_pc059:
+  extends: .jt_viv_build
+  dependencies:
+  needs:
+    - job: check:ouroboros_pc059
+      artifacts: true

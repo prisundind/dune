@@ -1,0 +1,18 @@
+<node id="TOP">
+    <node id="csr" address="0x0" description="ctrl/stat register" fwinfo="endpoint;width=4">
+        <node id="ctrl" address="0x0">
+        	<node id="prbs_init" mask="0x1"/>
+        </node>
+        <node id="stat" address="0x08">
+        	<node id="zflag" mask="0x1"/>
+        	<node id="zflag_rj45" mask="0x2"/>
+        </node>
+        <node id="cyc_ctr_l" address="0x09"/>
+        <node id="cyc_ctr_h" address="0x0a"/>
+        <node id="sfp_ctr_l" address="0x0b"/>
+        <node id="sfp_ctr_h" address="0x0c"/>
+        <node id="rj45_ctr_l" address="0x0d"/>
+        <node id="rj45_ctr_h" address="0x0e"/>
+    </node>
+    <node id="io" address="0x40" module="file://pdts_fmc_io.xml"/>
+</node>

@@ -1,0 +1,10 @@
+src pdts_fib_io.vhd
+src -c components/common  pdts_chklock.vhd
+include -c ipbus-firmware:components/opencores_i2c
+src -c ipbus-firmware:components/ipbus_slaves ipbus_ctrlreg_v.vhd ipbus_roreg_v.vhd
+include -c ipbus-firmware:components/ipbus_slaves ipbus_freq_ctr.dep
+src -c ipbus-firmware:components/ipbus_core ipbus_fabric_sel.vhd
+src ipbus_decode_pdts_fib_io.vhd
+addrtab -t pdts_fib_io.xml
+src -c ipbus-firmware:components/ipbus_slaves ipbus_reg_types.vhd
+

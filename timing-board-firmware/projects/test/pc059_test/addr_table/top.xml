@@ -1,0 +1,18 @@
+<node id="TOP">
+    <node id="csr" address="0x0" description="ctrl/stat register" fwinfo="endpoint;width=1">
+        <node id="ctrl" address="0x0">
+        	<node id="prbs_init" mask="0x1"/>
+        </node>
+        <node id="stat" address="0x1">
+        	<node id="zflag_cdr" mask="0x1"/>
+        	<node id="zflag_hdmi" mask="0x2"/>
+        	<node id="zflag_usfp" mask="0x4"/>
+        	<node id="zflag_sfp" mask="0xff00"/>
+        </node>
+    </node>
+    <node id="cyc_ctr" address="0x2" mode="block" size="0x2" fwinfo="endpoint;width=1"/>
+    <node id="ust_ctr" address="0x4" mode="block" size="0x2" fwinfo="endpoint;width=1"/>
+    <node id="cdr_ctr" address="0x6" fwinfo="endpoint;width=0"/>
+    <node id="sfp_ctr" address="0x8" mode="block" size="0x8" fwinfo="endpoint;width=3"/>
+    <node id="io" address="0x40" module="file://pdts_pc059_io.xml"/>
+</node>

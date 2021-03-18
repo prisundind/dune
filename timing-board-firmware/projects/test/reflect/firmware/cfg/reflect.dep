@@ -1,0 +1,4 @@
+setup -c boards/microzed/base_fw/synth settings_v7.tcl
+include -c boards/microzed/base_fw/synth z7020.dep
+src reflect.vhd
+src -c boards/microzed/base_fw/synth --cd ../ucf microzed.tcl
